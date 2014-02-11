@@ -3,6 +3,51 @@
 the potential bottlenecks that could affect page speed.
 - If you had 1 month to improve the Telegraaf.nl frontend, what would you do? Why?
 
+#### Answers ####
+- I think you need to check problems with scripts. Dirty console (with 404 errors) in browser is symptom that not everything right.
+![Script's bug](http://d.snfr.us/mZkY+)
+- You have so much inline scripts. I think it very difficult to maintain for all team members.
+- I think you must not blend apples, armchairs on the plate of pasta. Frontend code need to divided by logical parts: templates, css, js. If you will continue write your css and js in template in future, maintainability of project will be harder and harder.
+- Encapsulating your own javascript code for the clean Window object.
+- Time to first byte 309ms from Russia. I don't know, may be in Amsterdam everything is ok, but 309ms - it slowly.
+- Biggest part of your scripts loaded from head section. I think it's wrong. You may have some scripts in "head", but these scripts must contain data and functions without which it's impossible to load page. User forced to wait loading for all scripts on the page. He can see white page instead of content part of seconds or more.
+- I think biggest part of your event handlers must have been written in js-files, use jQuery .on() method or native cross-browser equivalent if overall percent of old IE's is so big.
+- I think you need cache static files.
+- I think you need to use :hover pseudo-class instead inline "onmouseover" event handler for css-only customizations.
+
+  ![Use hover instead of js everywhere if it possible](http://d.snfr.us/OaSW+)
+
+- I think you need to perform css optimizations. It's your css code, lines about 1470-1480:
+```css  
+div.vidoverview .header .paging {
+  color: #999;
+  float: right;
+  width: 494px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+div.vidoverview .header .paging .curpage {
+  color: #fff;
+}
+```  
+  So slow. I think you know how browser read selectors. It will be do 5 actions instead  one if you use for example BEM css-naming. It will be like this:
+```css  
+.vidooverview__pager{
+  color: #999;
+  // another stuff
+}
+
+.vidooverview__pager-item_state_active {
+  color: #fff;
+}
+```
+  In this example browser needs only one action to find element on page.
+
+- At the first month i won't to give prognosis about project. I think at the moment code on the project is different in different places. Project's team needs unified workflow. Methodology for css (like BEM, OOCSS, etc.), unified javascript style-guide. 
+- After that only we can talk about project's improvements.
+
+
 #### Ответы ####
 - Стоит проверить доступность всех скриптов, загружаемых на странице.
 ![Script's bug](http://d.snfr.us/mZkY+)
