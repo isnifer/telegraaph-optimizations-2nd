@@ -18,30 +18,30 @@ the potential bottlenecks that could affect page speed.
   ![Use hover instead of js everywhere if it possible](http://d.snfr.us/OaSW+)
 
 - Стоит выполнить css-оптимизации. Это пример вашего кода, в развернутом виде строки, примерно, 1470-1480:
-  
-    div.vidoverview .header .paging {
-      color: #999;
-      float: right;
-      width: 494px;
-      text-align: right;
-      margin-right: 10px;
-    }
-  
-      div.vidoverview .header .paging .curpage {
-      color: #fff;
-    }
-  
-  Уверен, у меня нет необходимости рассказывать, как читает селекторы. Помочь браузеру можно, например, используя BEM css-нотацию, селектор вида:
-  
-    .vidooverview__pager{
-      color: #999;
-      // another stuff
-    }
+```css  
+div.vidoverview .header .paging {
+  color: #999;
+  float: right;
+  width: 494px;
+  text-align: right;
+  margin-right: 10px;
+}
 
-    .vidooverview__pager-item_state_active {
-      color: #fff;
-    }
-  
+div.vidoverview .header .paging .curpage {
+  color: #fff;
+}
+```  
+  Уверен, у меня нет необходимости рассказывать, как читает селекторы. Помочь браузеру можно, например, используя BEM css-нотацию, селектор вида:
+```css  
+.vidooverview__pager{
+  color: #999;
+  // another stuff
+}
+
+.vidooverview__pager-item_state_active {
+  color: #fff;
+}
+```
   Браузер отработает быстрее. Да и в принципе, такой подход позволяет привнести большую ясность в код.
 
 - В первый и отведенный согласно заданию месяц я бы не стал давать оценку по оптимизации проекта. В первую очередь я бы синхронизировал рабочий процесс в группе разработке интерфейсов. Налицо разношерстный код, я по большому счету я изучил только главную страницу.
